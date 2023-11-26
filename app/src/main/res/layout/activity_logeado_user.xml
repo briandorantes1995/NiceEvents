@@ -109,7 +109,7 @@
         android:layout_marginBottom="29dp"
         android:ems="10"
         android:inputType="text"
-        android:text="Tareas Pendientes"
+        android:text="Canciones Disponibles"
         app:layout_constraintBottom_toTopOf="@+id/lvItems"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,36 +1,26 @@
 {
   "project_info": {
-    "project_number": "20024767826",
-    "project_id": "dispositivos-moviles-ab352",
-    "storage_bucket": "dispositivos-moviles-ab352.appspot.com"
+    "project_number": "98251041634",
+    "project_id": "musica-c1947",
+    "storage_bucket": "musica-c1947.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:20024767826:android:3def2f868533fa2741f68b",
+        "mobilesdk_app_id": "1:98251041634:android:9b43d4a982aec7aa4e1a3b",
         "android_client_info": {
           "package_name": "com.example.dispositivosmoviles"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "20024767826-q6p3bvtjve09a4qr6tlqgvim5b19kdsj.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyByVzWMmVSv48FJ9cORzFokaioduyg_rZE"
+          "current_key": "AIzaSyDS21hXUMsV4001qLFoliZcaWxm534CuUE"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "20024767826-q6p3bvtjve09a4qr6tlqgvim5b19kdsj.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

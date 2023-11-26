@@ -80,4 +80,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_qr_lector">QR_Lector</string>
+    <string name="title_activity_unirse_evento">Unirse_Evento</string>
+    <string name="title_activity_crear_evento">Crear_Evento</string>
 </resources>

@@ -2,8 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +23,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DISPOSITIVOSMOVILES"
         tools:targetApi="31">
+        <activity
+            android:name=".Crear_Evento"
+            android:exported="false"
+            android:label="@string/title_activity_crear_evento"
+            android:theme="@style/Theme.DISPOSITIVOSMOVILES" />
+        <activity
+            android:name=".Unirse_Evento"
+            android:exported="false"
+            android:label="@string/title_activity_unirse_evento"
+            android:theme="@style/Theme.DISPOSITIVOSMOVILES" />
+        <activity
+            android:name=".QR_Lector"
+            android:exported="false"
+            android:label="@string/title_activity_qr_lector"
+            android:theme="@style/Theme.DISPOSITIVOSMOVILES" />
         <activity
             android:name=".Videollamada"
             android:exported="false" />

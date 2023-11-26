@@ -9,7 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 
@@ -24,9 +27,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import timber.log.Timber;
 
@@ -39,6 +44,14 @@ public class REGISTRO extends AppCompatActivity {
     private EditText contrasena;
     private EditText contrasenaconfirmacion;
 
+    private ArrayList<String> tipos;
+
+    private ArrayAdapter<String> tipoAdapter;
+
+    private String seleccion;
+
+    Spinner tipo;
+
 
 
     @Override
@@ -50,7 +63,28 @@ public class REGISTRO extends AppCompatActivity {
         correo = findViewById(R.id.Correo);
         contrasena = findViewById(R.id.Contrasena);
         contrasenaconfirmacion = findViewById(R.id.ContrasenaConfirmacion);
+        tipo = findViewById(R.id.tipousuario);
+        tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?>arg0, View view, int arg2, long arg3) {
+                seleccion = tipo.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+
+            }
+        });
         // Inicializa base de datos para guardas info del usuario
+
+        tipos = new ArrayList<String>();
+        tipos.add("Tipo de registro");
+        tipos.add("Grupo");
+        tipos.add("Usuario");
+        tipoAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, tipos);
+        tipo.setAdapter(tipoAdapter);
     }
     @Override
     public void onStart() {
@@ -73,18 +107,28 @@ public class REGISTRO extends AppCompatActivity {
                                 //Se devuelve a la pantalla principal
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 //Envia Mail de autenticacion
+                                assert user != null;
                                 user.sendEmailVerification();
                                 Toast.makeText(getApplicationContext(), "E-mail de Verificacion enviado", Toast.LENGTH_SHORT).show();
 
                                 //Agrega datos a base de datos
 
                                 Map<String, Object> data = new HashMap<>();
-                                data.put("nombre", nombre.getText().toString());
-                                data.put("correo", correo.getText().toString());
-                                data.put("admin", false);
-                                data.put("actividades", Arrays.asList("comer sanamente","Hacer ejercicio Diariamente","cumplir con la tarea"));
-
-
+                                if(Objects.equals(seleccion, "Usuario")){
+                                    data.put("nombre", nombre.getText().toString());
+                                    data.put("correo", correo.getText().toString());
+                                    data.put("banda", false);
+                                    data.put("votacion", "");
+                                    data.put("admin", false);
+                                }else{
+                                    data.put("nombre", nombre.getText().toString());
+                                    data.put("correo", correo.getText().toString());
+                                    data.put("banda", true);
+                                    data.put("canciones", new ArrayList<String>());
+                                    data.put("evento", false);
+                                    data.put("token_evento", "");
+                                    data.put("admin", false);
+                                }
 
                                 FirebaseFirestore.getInstance().collection("Users")
                                         .add(data)
